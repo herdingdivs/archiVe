@@ -10,6 +10,9 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
+.btn {
+    border-radius: 0px !important;
+}
 
 
 html,
@@ -17,17 +20,26 @@ body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
-/* Wrapper for page content to push down footer */
+
+.logo {
+  width: 25px;
+  height: 25px;
+  overflow: none;
+}
+ 
 .content {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /*min-height: 100%;*/
+  /*height: auto !important;*/
+  /*height: 100%;*/
   /* Negative indent footer by it's height */
-  margin: 0 auto -60px;
+  /*margin: 0 auto -60px;*/
+  overflow: scroll;
 }
 
 /* Set the fixed height of the footer here */
-.push,
+/*.push,
 .footer {
   height: 60px;
 }
@@ -35,21 +47,20 @@ body {
   background-color: #eee;
 }
 
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
+
+@media (max-width: 1200px) {
 .footer {
   margin-left: -20px;
   margin-right: -20px;
   padding-left: 20px;
   padding-right: 20px;
+}*/
+
+
+.bucket {
+  width: 25px;
+  height: 25px;
+  overflow: none;
+
 }
-
-#favs {
-	background-color: blue;
-	height: 20px;
-}
-
-
-
-
 
