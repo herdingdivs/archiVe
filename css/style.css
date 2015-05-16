@@ -31,12 +31,15 @@
 
 html,
 body {
+  background-color: #181818;
   height: 100%;
   margin-bottom: 100px;
   /* The html and body elements cannot have any padding or margin. */
 }
 
 .header {
+  width: 100%;
+  background-color: #181818;
   padding-top: 20px;
   padding-bottom: 20px;
 
@@ -77,13 +80,13 @@ body {
   padding-right: 20px;
 }*/
 
-.footer {
+/*.footer {
 
 position: fixed;
   width: 100%;
   bottom: 0;
 
-}
+}*/
 
 
 .clearfix {
