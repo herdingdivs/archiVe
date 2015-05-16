@@ -10,7 +10,7 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
-.btn {
+.btn btn-danger{
     border-radius: 0px !important;
 }
 
@@ -32,9 +32,11 @@
 html,
 body {
   background-color: #181818;
-  height: 100%;
+  width: 100%;
+  height: 100vh;
   margin-bottom: 100px;
-  /* The html and body elements cannot have any padding or margin. */
+  background-repeat: no-repeat;
+  background-position: center; 
 }
 
 .header {
@@ -101,3 +103,15 @@ position: fixed;
     clear: both;
   }
 }
+
+
+/* Yvonne */
+
+#select {
+    image-source:"item.volumeInfo.imageLinks.thumbnail";
+    width: 200px;
+    height: 200px;
+
+}
+
+
