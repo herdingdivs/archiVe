@@ -37,7 +37,7 @@
     <div class="container">
     <!-- logo, search box-->
       <div class="input-group">
-        <span class="input-group-addon logo"><img src="img/book_logo.svg" alt="logo"></span>
+        <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
         <input type="text" class="form-control" placeholder="Search" aria-hidden="true">
         <span class="input-group-addon glyphicon glyphicon-search"></span>
       </div>
@@ -54,7 +54,7 @@
 
         <!-- single tile start -->
     		<div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="tile" id="result0"> 
+          <div class="tile" id="content0"> 
             <a href="#" class="thumbnail">
               <img src="http://lorempixel.com/g/128/175/" alt="...">
                <span class="title">The Meaning of Life</span><br>
@@ -171,21 +171,23 @@
 
 
   <div class="container">
-    <footer class="footer">
+    <div class="clearfix">
+      <footer class="navbar-fixed-bottom">
 
-    <!-- collection categories -->
-      <div class="container">
+      <!-- collection categories -->
+        <div class="container">
 
-        <div class="row">
-          <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3">Keeper</button>
-          <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3">Surfing</button>
-          <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3">Gonna</button>
-          <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3">Maybe</button>
+          <div class="row">
+            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
+            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
+            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
+            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
+          </div>
+       
         </div>
-     
-      </div>
-    	
-    </footer>
+      	
+      </footer>
+    </div>
   </div>
 <!-- closed footer container -->
 </div>
