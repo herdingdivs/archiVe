@@ -6,7 +6,7 @@
 	 xml:space="preserve">
 <path fill="none" stroke="#ffffff" stroke-width="10" stroke-miterlimit="10" d="M186.902,246.898c0,6.627-5.373,12-12,12h-154
 	c-6.627,0-12-5.373-12-12v-213c0-6.627,5.373-12,12-12h154c6.627,0,12,5.373,12,12V246.898z"/>
-<path stroke="#ffffff" stroke-width="10" stroke-miterlimit="10" d="M154.902,27.195c0,3.803-5.373,6.703-12,6.703h-91
+<path fill="none" stroke="#ffffff" stroke-width="10" stroke-miterlimit="10" d="M154.902,27.195c0,3.803-5.373,6.703-12,6.703h-91
 	c-6.627,0-12-2.9-12-6.703V16.291c0-3.803,5.373-6.393,12-6.393h91c6.627,0,12,2.589,12,6.393V27.195z"/>
 <line fill="none" stroke="#ffffff" stroke-width="28" stroke-miterlimit="10" x1="51.152" y1="134.648" x2="80.902" y2="164.398"/>
 <line fill="none" stroke="#ffffff" stroke-width="28" stroke-miterlimit="10" x1="73.152" y1="176.648" x2="146.569" y2="103.231"/>
