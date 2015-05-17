@@ -3,79 +3,85 @@
 <html lang="en">
 <head>
 
-  
 
-  <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  	
-  	<title>Archive</title>
-  	<meta name="description" content="Archive">
-  
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>Archive</title>
+    <meta name="description" content="Archive">
 
 
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="drag_drop/drag_drop.js"></script>
 
-<!-- Optional theme -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<!-- custom style sheets -->
+    <!-- custom style sheets -->
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('body').css('background-image', 'url(img/logo.svg)');
         $('body').css('background-size', '50%');
     });
 </script>
 <div class="container">
-  <header class="header center-block navbar-fixed-top">
-    <div class="container">
+    <header class="header center-block navbar-fixed-top">
+        <div class="container">
 
-    <!-- logo, search box-->
-   <!--  <div class="col-xs-12 col-sm-12 col-md-12 center-block">
-    <form class="form-inline">
-      <div class="form-group">
-        
-            <div class="input-group input-group-lg">
-              <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
-              <input type="text" class="form-control" placeholder="Search" aria-hidden="true">
-              <button type="submit" class="btn btn-default"><span class="input-group-addon glyphicon glyphicon-search" style="vertical-align:middle"></span></button> 
+            <!-- logo, search box-->
+            <!--  <div class="col-xs-12 col-sm-12 col-md-12 center-block">
+             <form class="form-inline">
+               <div class="form-group">
+
+                     <div class="input-group input-group-lg">
+                       <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
+                       <input type="text" class="form-control" placeholder="Search" aria-hidden="true">
+                       <button type="submit" class="btn btn-default"><span class="input-group-addon glyphicon glyphicon-search" style="vertical-align:middle"></span></button>
+                     </div>
+                   </div>
+
+               </div>
+             </form>
+             </div> -->
+
+            <!-- TEST -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <div class="input-group-addon glyphicon glyphicon-search"></div>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-6 -->
             </div>
-          </div>
-        
-      </div>
-    </form>
-    </div> -->
+            <!-- /.row -->
 
-<!-- TEST -->
-    <div class="row">
-    <div class="col-lg-6">
-    <div class="input-group input-group-lg">
-     <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
-      <input type="text" class="form-control" placeholder="Search">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><div class="input-group-addon glyphicon glyphicon-search"></div></button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-
-
-  </header>
+        </div>
+    </header>
 </div>
 <!-- closes header and container -->
-  
+
 <!-- <div id = "select"></div>
     <div id = "content"></div>
     <script>
@@ -99,11 +105,11 @@
 </div>
  -->
 <div class="container">
-  <div class="content">
-  	<div class="row">
+    <div class="content">
+        <div class="row">
 
-        <!-- single tile start -->
-    		<!-- <div class="col-xs-12 col-sm-6 col-md-3">
+            <!-- single tile start -->
+            <!-- <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="tile" id="content0"> 
             <a href="#" class="thumbnail">
               <img src="http://lorempixel.com/g/128/175/" alt="...">
@@ -114,36 +120,40 @@
              
           </div>
         </div> -->
-        <!-- single tile end-->
+            <!-- single tile end-->
 
-
-        
+        </div>
     </div>
-  </div>
 </div>
 
 
-
-
-  <div class="container">
+<div class="container">
     <div class="clearfix">
-      <footer class="navbar-fixed-bottom">
+        <footer class="navbar-fixed-bottom">
 
-      <!-- collection categories -->
-        <div class="container">
+            <!-- collection categories -->
+            <div class="container">
 
-          <div class="row">
-            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
-            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
-            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
-            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
-          </div>
-       
-        </div>
-      	
-      </footer>
+                <div class="row">
+                    <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div>
+                        <p class="collectionText">Keeper</p></button>
+                    <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div>
+                        <p class="collectionText">Surfing</p></button>
+                    <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div>
+                        <p class="collectionText">Gonna</p></button>
+                    <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div>
+                        <p class="collectionText">Maybe</p></button>
+                </div>
+
+            </div>
+
+        </footer>
     </div>
-  </div>
+</div>
 <!-- closed footer container -->
 </div>
 <!-- closed global container -->

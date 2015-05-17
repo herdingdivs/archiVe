@@ -114,4 +114,20 @@ position: fixed;
 
 }
 
+/*drag and drop */
+.danger {
+    background-color: #d9534f;
+}
+
+.primary {
+    background-color: #337ab7;
+}
+
+.warning {
+    background-color: #f0ad4e;
+}
+
+.success {
+    background-color: #5cb85c;
+}
 
