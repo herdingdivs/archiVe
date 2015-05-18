@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
   
@@ -27,62 +27,136 @@
 
 <!-- custom style sheets -->
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="..//css/style.css">
 
 </head>
+
 
 <body>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('body').css('background-image', 'url(../img/logo.svg)');
+        $('body').css('background-image', 'url(..//img/logo.svg)');
     });
 </script>
 <div class="container">
   <header class="header center-block">
     <div class="container">
     <!-- logo, search box-->
-    <div class="col-xs-12 col-sm-12 col-md-12 center-block">
+        <div class="col-xs-12 col-sm-12 col-md-12 center-block">
+        <form id="search">
         <div class="input-group">
-          <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
-          <input type="text" class="form-control" placeholder="Search" aria-hidden="true">
-          <span class="input-group-addon glyphicon glyphicon-search"></span>
+            <span class="input-group-addon logo"><img src="..//img/logo_sm.svg" alt="logo"></span>
+            <input id="subject" class="form-control" placeholder="Search" aria-hidden="true">
+
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default" id="go" ><span class="input-group-addon glyphicon glyphicon-search"></span> </button>
+
         </div>
       </div>
+            </form>
+        </div>
     </div>
   </header>
 </div>
 <!-- closes header and container -->
   
-<!-- <div id = "select"></div>
-    <div id = "content"></div>
+<!--<div id = "select"></div> -->
+    <div class = "container">
+
+       <<div id = "select">
+       <!-- <div id = "select"></div> -->
     <script>
-        $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:"guitar"})
-                .done(
-                function(data) {
-                    console.log(data);
-                    var results = data;
-                    handleResponse(results);
-                    console.log("results");
-                });
+        $('#search').on("submit",function(e) {
+            console.log(e);
+            e.preventDefault();
+            $("#subject").empty();
+            var s = $("#subject").val();
+            $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
+                    .done(
+                    function(data) {
+                        console.log(data);
+                        var results = data;
+                        handleResponse(results);
+                        console.log("results");
+                    }
+            );
+        });
+</script>
+
+      <<div class="container">
+
+
+
+           <script>
         function handleResponse(results) {
-            var item = results.items[8];
-            $('#select').append("<p><img src= "+ item.volumeInfo.imageLinks.thumbnail + "</p>");
-            $('#content').append("<p>"+ item.volumeInfo.title + " by " + item.volumeInfo.authors + "<br><br><br>"+item.volumeInfo.description + "</p>");
-        };
-        // in production code, item.text should have the HTML entities escaped.
-                //            get thumbnail image,
-    </script>
+            for (var i = 0; i < 9; i++) {
+                var item = results.items[i];
+                $('#select').append("<p><img src= "+ item.volumeInfo.imageLinks.thumbnail + "<br>"+ item.volumeInfo.title + " by " + item.volumeInfo.authors +"</p>");
+              //  $('#select').append("<p><img src= "+ item.volumeInfo.imageLinks.thumbnail + "</p>");
+              //  $('#content').append("<p>"+ item.volumeInfo.title + " by " + item.volumeInfo.authors + "</p>");
+
+                // var $newBook = ($item.volumeInfo.title,);
+                //$('#tile').append("<p class = img><img src= " + item.volumeInfo.imageLinks.thumbnail + "<br>" + item.volumeInfo.title + " by " + "<br>" + item.volumeInfo.authors + " </p>")
+                //           $('#row').append("<p>" + item.volumeInfo.title + " by " + item.volumeInfo.authors + "</p>");
+            }
+
+         $("#subject").val("");
+
+
+        }
+
+
+           </script>
+
+
+
+           <!-- <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail">
+
+            </a></div>
+            <div class="col-md-3">.col-md-3</div>
+            <div class="col-md-3">.col-md-3</div>
+            <div class="col-md-3">.col-md-3</div>
+        </div>
+
+                   <!-- <img src="+ item.volumeInfo.imageLinks.thumbnail + " alt="...">
+                    <div class="title">
+
+</div> -->
+</div>
 
 </div>
- -->
-<div class="container">
-  <div class="content">
-  	<div class="row">
+
+
+        <!--        <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <!--     <div class="tile">-->
+              <!--  <div class="tile">
+                    <a target="_blank" href="#" class="thumbnail">
+                        <img src="item.volumeInfo.imageLinks.thumbnail" alt="..." width="150" height="150">
+                    </a>
+                    <p class="title">"+item.volumeInfo.title+"by"+ item.volumeInfo.authors+"<p>
+
+
+
+                </div>
+
+
+
+                </div>
+
+</div> -->
+
+      <!-- in production code, item.text should have the HTML entities escaped.
+                //            get thumbnail image,-->
+
+
+
+
+
 
         <!-- single tile start -->
-    		<div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="tile" id="content0"> 
-            <a href="#" class="thumbnail">
+
+ <!--          <a href="#" class="thumbnail">
               <img src="http://lorempixel.com/g/128/175/" alt="...">
                <span class="title">The Meaning of Life</span><br>
                 <span class="authors">Trevor Paglan</span>
@@ -94,8 +168,8 @@
         <!-- single tile end-->
 
 
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="tile"> 
+   <!--     <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="tile">
             <a href="#" class="thumbnail">
               <img src="http://lorempixel.com/g/128/175/" alt="...">
                <span class="title">The Meaning of Life</span><br>
@@ -191,8 +265,8 @@
 
 
     </div>
-  </div>
-</div>
+  </div>-->
+
 
 
 
@@ -205,10 +279,10 @@
         <div class="container">
 
           <div class="row">
-            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
-            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
-            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
-            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
+            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
+            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
+            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
+            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
           </div>
        
         </div>
@@ -217,9 +291,11 @@
     </div>
   </div>
 <!-- closed footer container -->
-</div>
+
 <!-- closed global container -->
 
+
+</div>
 </body>
 
 

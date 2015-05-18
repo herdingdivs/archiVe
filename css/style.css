@@ -50,18 +50,36 @@ body {
 .logo {
   width: 25px;
   height: 25px;
-  overflow: none;
+  overflow:hidden;
 }
- 
-.content {
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+#tile {
+    display: inline;
+    height: auto;
+    width: auto;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+
+}
+
+
+
+
+/*.content {
+    padding-top: 20px;
+    padding-bottom: 20px;*/
+
+}
+   /* height: 200px;
+ /*   width: 100px;
+
   /*min-height: 100%;*/
   /*height: auto !important;*/
   /*height: 100%;*/
   /* Negative indent footer by it's height */
   /*margin: 0 auto -60px;*/
-  overflow: hidden;
+  /*overflow: hidden;
 }
 
 /* Set the fixed height of the footer here */
@@ -92,25 +110,25 @@ position: fixed;
 
 
 .clearfix {
-  *zoom: 1;
-  &:before,
+  *zoom: 1
+  &:before;
   &:after {
     display: table;
     content: "";
     line-height: 0;
-  }
+
   &:after {
     clear: both;
   }
 }
 
 
-/* Yvonne */
+/* Yvonne
 
 #select {
-    image-source:"item.volumeInfo.imageLinks.thumbnail";
+
     width: 200px;
-    height: 200px;
+    height: 200px;*/
 
 }
 
@@ -131,3 +149,21 @@ position: fixed;
     background-color: #5cb85c;
 }
 
+#content {
+
+    padding: 3px;
+
+color: #ffffff;
+    font-size: 14px;
+display: inline;
+}
+
+
+
+#select {
+
+    width: 200px;
+    height: 250px;
+    font-size: 14px;
+
+}
