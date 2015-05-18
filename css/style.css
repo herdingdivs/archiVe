@@ -1,3 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
@@ -10,8 +13,12 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
-.btn btn-danger{
+.btn-danger, .btn-primary, .btn-warning, .btn-success{
     border-radius: 0px !important;
+}
+
+.changeBackground{
+   background-image: none !important;
 }
 
 .collectionIcon {
@@ -42,44 +49,32 @@ body {
 .header {
   width: 100%;
   background-color: #181818;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  /*padding-top: 20px;
+  padding-bottom: 20px;*/
+  padding: 20px 40px 20px 40px;
 
 }
 
 .logo {
   width: 25px;
   height: 25px;
-  overflow:hidden;
+  overflow: none;
 }
-
-#tile {
-    display: inline;
-    height: auto;
-    width: auto;
-    text-align: center;
-    height: 200px;
-    width: 200px;
-
-}
-
-
-
-
-/*.content {
-    padding-top: 20px;
-    padding-bottom: 20px;*/
-
-}
-   /* height: 200px;
- /*   width: 100px;
-
+ 
+.container {
+  display: absolute;
+  margin-top: 40px;
+  /*padding-top: 20px;
+  padding-bottom: 20px;*/
+  /*border-width: 1px;
+  border-style: solid;
+  border-top-color: #fff;*/
   /*min-height: 100%;*/
   /*height: auto !important;*/
   /*height: 100%;*/
   /* Negative indent footer by it's height */
   /*margin: 0 auto -60px;*/
-  /*overflow: hidden;
+  overflow: hidden;
 }
 
 /* Set the fixed height of the footer here */
@@ -110,60 +105,26 @@ position: fixed;
 
 
 .clearfix {
-  *zoom: 1
-  &:before;
+  *zoom: 1;
+  &:before,
   &:after {
     display: table;
     content: "";
     line-height: 0;
-
+  }
   &:after {
     clear: both;
   }
 }
 
 
-/* Yvonne
+/* Yvonne */
 
 #select {
-
+    image-source:"item.volumeInfo.imageLinks.thumbnail";
     width: 200px;
-    height: 200px;*/
+    height: 200px;
 
 }
 
-/*drag and drop */
-.danger {
-    background-color: #d9534f;
-}
 
-.primary {
-    background-color: #337ab7;
-}
-
-.warning {
-    background-color: #f0ad4e;
-}
-
-.success {
-    background-color: #5cb85c;
-}
-
-#content {
-
-    padding: 3px;
-
-color: #ffffff;
-    font-size: 14px;
-display: inline;
-}
-
-
-
-#select {
-
-    width: 200px;
-    height: 250px;
-    font-size: 14px;
-
-}
