@@ -7,7 +7,7 @@ $(document).ready(function() {
             $this = $this.parents(".btn");
         };
 
-        /* I need the JSON object associated with each tile to store in local storage */
+        /* Need JSON object associated with each tile to store in local storage */
         var collection = null;
         if ($this.hasClass("btn-danger")) {
             thumb.addClass("danger");

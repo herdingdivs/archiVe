@@ -19,22 +19,17 @@
 
 }
 
-
 .title {
 
   color: #000;
 
 }
 
-
 .authors {
   
   color: #000;
 
 }
-
-
-
 
 .btn-danger, .btn-primary, .btn-warning, .btn-success{
     border-radius: 0px !important;
@@ -51,7 +46,6 @@
 }
 
 .collectionText {
-  
   font-size: 150%;
   letter-spacing: 2px;
 
@@ -77,12 +71,9 @@ body {
 .header {
   display: absolute;
   width: 100%;
-  
-
 }
 
 #searchBox {
-
 
 }
 
@@ -128,7 +119,6 @@ body {
   background-color: #eee;
 }
 
-
 @media (max-width: 1200px) {
 .footer {
   margin-left: -20px;
@@ -145,7 +135,6 @@ position: fixed;
 
 }*/
 
-
 .clearfix {
   *zoom: 1;
   &:before,
@@ -159,14 +148,12 @@ position: fixed;
   }
 }
 
-
 /* Yvonne */
 
 #select {
     image-source:"item.volumeInfo.imageLinks.thumbnail";
     width: 200px;
     height: 200px;
-
 }
 
 /*drag and drop */
@@ -187,19 +174,15 @@ position: fixed;
 }
 
 #content {
-
     padding: 3px;
-
-color: #ffffff;
+    color: #ffffff;
     font-size: 14px;
-display: inline;
+    display: inline;
 }
-
 
 #select {
 color:#ffffff;
     width: 200px;
     height: 250px;
-    font-size: 14px;
-
+    font-size: 14px
 }

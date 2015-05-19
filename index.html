@@ -20,7 +20,6 @@
   <script src="js/drag_drop.js"></script>
   <script src="js/local_storage.js"></script>
 
-
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
@@ -91,35 +90,14 @@
                             console.log(data);
                            // var results = data;
                             //handleResponse(results);
-                            data.items.forEach(function(book){
-                                render(book, $('.bin'));
-                            })
-                            console.log("results");
+                            renderAll(data.items, ".bin")
                         }
                 );
             });
         </script>
 
         <div class="bin">
-          <script>
-           var cache = {};                                   //cache is available everywhere
-           var render = function(book, bin) {
-           var id = book.id;
-           cache[id] = book;
-           var html =
-           '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix">' +
-           '<a href="#" class="thumbnail">' +
-               '<img src="'+book.volumeInfo.imageLinks.thumbnail+'" alt="...">' +
-               '<p class="text-center title"><strong>' +book.volumeInfo.title + '</strong></p><br>' +
-               '<p class="text-center authors">' + book.volumeInfo.authors[0] + '</p>' +
-               '</a>' +
-           '</div>';
 
-           $(html).data("id", id).appendTo(bin);
-
-           }
-
-          </script>
         </div>
         <!-- end bin --> 
     </div>
