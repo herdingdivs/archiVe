@@ -1,17 +1,19 @@
 var cache = {};                                   //cache is available everywhere
-var render = function(book, container) {
+var render = function(book, bin) {
     var id = book.id;
     cache[id] = book;
     var html =
-        '<div class="tile">' +
+        '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix">' +
         '<a href="#" class="thumbnail">' +
-        '<img src="http://lorempixel.com/g/128/175/" alt="...">' +
-        '<span class="title">' + book.volumeInfo.title + '</span><br>' +
-        '<span class="authors">' + book.volumeInfo.authors[0] + '</span>' +
+        '<img src="'+book.volumeInfo.imageLinks.thumbnail+'" alt="...">' +
+        '<p class="text-center title"><strong>' +book.volumeInfo.title + '</strong></p><br>' +
+        '<p class="text-center authors">' + book.volumeInfo.authors[0] + '</p>' +
         '</a>' +
         '</div>';
-    $(html).data("id", id).appendTo(container);
-};
+
+    $(html).data("id", id).appendTo(bin);
+
+}
 var renderAll = function(books, container) {                      //calling a method
     $(books).each(function (i, item) {   //grab items, take each one and do something
         render(item, container);
