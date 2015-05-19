@@ -51,11 +51,15 @@
 
 }
 
+
 #collectionBin {
-  padding-top: 5px;
+  padding-top:5px;
   border-top-style: dotted;
   border-top-width: 1px;
   border-top-color: #FCFCFC;
+height:auto;
+    width:1000px;
+display: inherit;
 }
 
 html,
@@ -80,22 +84,20 @@ body {
 .logo {
   width: 25px;
   height: 25px;
-  overflow: none;
+  overflow: hidden;
 }
 
 #tile {
     display: inline;
-    height: auto;
-    width: auto;
+    height-min:300px;
+
     text-align: center;
-    height: 200px;
-    width: 200px;
     background-color: #FCFCFC;
 
 }
  
 .container {
-  display: absolute;
+  display:block;
   margin-top: 40px;
   /*padding-top: 20px;
   padding-bottom: 20px;*/
