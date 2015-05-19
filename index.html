@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
   
@@ -9,16 +9,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  	
-  	<title>Archive</title>
-  	<meta name="description" content="Archive">
+    
+    <title>Archive</title>
+    <meta name="description" content="Archive">
   
- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="js/render_books.js"></script>
+  <script src="js/drag_drop.js"></script>
+  <script src="js/local_storage.js"></script>
+
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="js/drag_drop.js"></script>
-    <script src="js/render_books.js"></script>
+
+
 
 <!-- Optional theme -->
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
@@ -32,15 +38,9 @@
 
 </head>
 
-<body>
-<script> 
-$(".tile").click(function(){
-    $("#collection").animate({
-        height: '+=150px',
-    });
-});
-</script> 
 
+<body>
+<!-- script testing -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('body').css('background-image', 'url(img/logo.svg)');
@@ -48,126 +48,87 @@ $(".tile").click(function(){
     });
 </script>
 
-<script type="text/javascript">
-$(window).load(function (e) {
-$('#search').on("submit",function(e) {
-    e.preventDefault(){
-    $('this').toggleClass("changeBackground");
-
-                    }
-                  }
-                }
-});
-});
-</script>
+<!-- end script testing -->
 
 
-<script>
-    $('#search').on("submit",function(e) {
-console.log(e);
-        e.preventDefault();
-        <!-- clear content form after submission -->
-        $("#content").empty();
-        var s = $("#subject").val();
-        <!-- Request data from Google Books -->
-        $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
-                .done(
-                function(data) {
-                    console.log(data);
-                    var results = data;
-                    handleResponse(results);
-                }
-        );
-//        $.ajax({
-//            method: 'GET',
-//            url: "https://www.googleapis.com/books/v1/volumes",
-//            data: {q:s},
-//            success: handleResponse(),
-//            dataType: 'jsonp'
-//        });
-    });
-    <!-- Default Response is 10 items. Loop to list Responses -->
-    function handleResponse(results){
-        for (var i = 0; i < results.items.length; i++) {
-            var item = results.items[i];
-            // in production code, item.text should have the HTML entities escaped.
-            $('#content').append("<p><img src='" + item.volumeInfo.imageLinks.thumbnail + "' class='bookThumbnail' />" +item.volumeInfo.title + " by " + item.volumeInfo.authors + "</p>");
-            //            get thumbnail image, title, authors.
-        }
-        <!-- clear "subject" input value. Ready to go again -->
-        $("#subject").val("");
-    }
-</script>
-
-<!-- Search bar -->
+<!-- start Container for header -->
 <div class="container">
-  <header class="header center-block navbar-fixed-top">
+  <header class="header center-block" id="searchBar">
     
-   <form id="search">
-    <div class="row">
-    <div class="col-lg-12">
-    <div class="input-group input-group-lg">
-     <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
-      <input type="text" class="form-control" placeholder="Search">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="submit"><div class="input-group-addon glyphicon glyphicon-search"></div></button>
-      </span>
-    </div>
-  </div>
-  </form>
+    <!-- start Search Bar-->
+        <div class="col-xs-12 col-sm-12 col-md-12 center-block">
+        <form id="search"> 
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
+            <input id="subject" class="form-control" placeholder="Search" aria-hidden="true">
 
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default" id="go" ><span class="input-group-addon glyphicon glyphicon-search"></span> </button>
 
-
+        </div>
+      </div>
+            </form>
+        </div>
+      <!-- end Search bar -->
   </header>
+  <!-- end Header -->
 </div>
-<!-- end Search bar -->
-  
+<!-- end Container -->
 
-<!-- start Content -->
+<!-- start results / bin / etc -->
+    <div class = "container" id="collectionBin">
 
-<div class="container">
-  <div class="content">
-  	<div class="row">
+        <script>
+            $('#search').on("submit",function(e) {
+                console.log(e);
+                e.preventDefault();
+                $('body').css('background-image','none');
+                $("#subject").empty();
+                var s = $("#subject").val();
+                $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
+                        .done(
+                        function(data) {
+                            console.log(data);
+                           // var results = data;
+                            //handleResponse(results);
+                            data.items.forEach(function(book){
+                                render(book, $('.bin'));
+                            })
+                            console.log("results");
+                        }
+                );
+            });
+        </script>
 
-        <!-- single tile start -->
-    		<!-- <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="content"> 
-            <a href="#" class="bookThumbnail">
-              <img src="..." alt="...">
-               <p class="title">...</p><br>
-                <p class="authors">...</p>
+        <div class="bin">
+          <script>
+           var cache = {};                                   //cache is available everywhere
+           var render = function(book, bin) {
+           var id = book.id;
+           cache[id] = book;
+           var html =
+           '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix">' +
+           '<a href="#" class="thumbnail">' +
+               '<img src="'+book.volumeInfo.imageLinks.thumbnail+'" alt="...">' +
+               '<p class="text-center title"><strong>' +book.volumeInfo.title + '</strong></p><br>' +
+               '<p class="text-center authors">' + book.volumeInfo.authors[0] + '</p>' +
+               '</a>' +
+           '</div>';
 
-            </a>
-             
-          </div>
-        </div>  -->
-        <!-- single tile end-->
+           $(html).data("id", id).appendTo(bin);
+
+           }
+
+          </script>
+        </div>
+        <!-- end bin --> 
+    </div>
+    <!-- end Container -->
+
+
         
-       <!--  <div id="results"></div>
-         <div id="results0"></div>
-         <div id="content"></div>
-         <div id="content0"></div>
- -->
-<!-- single tile start -->
-    		<!-- <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="tile" id="content1"> 
-            <a href="#" class="thumbnail">
-              <img src="http://lorempixel.com/g/128/175/" alt="...">
-               <span class="title"></span><br>
-                <span class="authors"></span>
 
-            </a>
-             
-          </div>
-        </div>  -->
-        <!-- single tile end-->
-        
-    <!-- </div>
-  </div>
-</div>
- -->
-
-<!-- end ctonent, Start footer -->
+        <!-- start Footer -->
 
   <div class="container">
     <div class="clearfix">
@@ -177,24 +138,25 @@ console.log(e);
         <div class="container">
 
           <div class="row">
-            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3 collection"><div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
-            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3 collection"><div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
-            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3 collection"><div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
-            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3 collection"><div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
+            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
+            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
+            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
+            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
           </div>
        
         </div>
-      	
+        
       </footer>
     </div>
   </div>
 <!-- closed footer container -->
-</div>
+
 <!-- closed global container -->
 
+
+</div>
 </body>
 
 
 </html>
-
 

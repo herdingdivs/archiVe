@@ -13,6 +13,29 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
+
+.tile a {
+  text-decoration: none !important;
+
+}
+
+
+.title {
+
+  color: #000;
+
+}
+
+
+.authors {
+  
+  color: #000;
+
+}
+
+
+
+
 .btn-danger, .btn-primary, .btn-warning, .btn-success{
     border-radius: 0px !important;
 }
@@ -34,11 +57,16 @@
 
 }
 
-
+#collectionBin {
+  padding-top: 5px;
+  border-top-style: dotted;
+  border-top-width: 1px;
+  border-top-color: #FCFCFC;
+}
 
 html,
 body {
-  background-color: #181818;
+  background-color: #242424;
   width: 100%;
   height: 100vh;
   margin-bottom: 100px;
@@ -47,11 +75,14 @@ body {
 }
 
 .header {
+  display: absolute;
   width: 100%;
-  background-color: #181818;
-  /*padding-top: 20px;
-  padding-bottom: 20px;*/
-  padding: 20px 40px 20px 40px;
+  
+
+}
+
+#searchBox {
+
 
 }
 
@@ -68,6 +99,7 @@ body {
     text-align: center;
     height: 200px;
     width: 200px;
+    background-color: #FCFCFC;
 
 }
  
