@@ -1,0 +1,328 @@
+<!doctype html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+  
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  	
+  	<title>Archive</title>
+  	<meta name="description" content="Archive">
+  
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- custom style sheets -->
+
+<link rel="stylesheet" href="..//css/style.css">
+
+</head>
+
+
+<body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('body').css('background-image', 'url(..//img/logo.svg)');
+    });
+</script>
+<div class="container">
+  <header class="header center-block">
+    <div class="container">
+    <!-- logo, search box-->
+        <div class="col-xs-12 col-sm-12 col-md-12 center-block">
+        <form id="search">
+        <div class="input-group">
+            <span class="input-group-addon logo"><img src="..//img/logo_sm.svg" alt="logo"></span>
+            <input id="subject" class="form-control" placeholder="Search" aria-hidden="true">
+
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default" id="go" ><span class="input-group-addon glyphicon glyphicon-search"></span> </button>
+
+        </div>
+      </div>
+            </form>
+        </div>
+    </div>
+  </header>
+</div>
+<!-- closes header and container -->
+  
+<!--<div id = "select"></div> -->
+    <div class = "container">
+
+
+       <!-- <div id = "select"></div> -->
+    <script>
+        $('#search').on("submit",function(e) {
+            console.log(e);
+            e.preventDefault();
+            $("#subject").empty();
+            var s = $("#subject").val();
+            $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
+                    .done(
+                    function(data) {
+                        console.log(data);
+                       // var results = data;
+                        //handleResponse(results);
+                        data.items.forEach(function(book){
+                            render(book, $('.bin'));
+                        })
+                        console.log("results");
+                    }
+            );
+        });
+</script>
+
+      <div class="bin">
+          <script>
+           var cache = {};                                   //cache is available everywhere
+           var render = function(book, bin) {
+           var id = book.id;
+           cache[id] = book;
+           var html =
+           '<div class="tile">' +
+           '<a href="#" class="thumbnail">' +
+               '<img src="'+book.volumeInfo.imageLinks.thumbnail+'" alt="...">' +
+               '<span class="title">' +book.volumeInfo.title + '</span><br>' +
+               '<span class="authors">' + book.volumeInfo.authors[0] + '</span>' +
+               '</a>' +
+           '</div>';
+
+           $(html).data("id", id).appendTo(bin);
+
+           }
+//           var renderAll = function(book, bin) {                      //calling a method
+//           $(book).each(function (i, item) {   //grab items, take each one and do something
+//               render(item, bin);
+//           });
+//           }
+//           }
+
+</script>
+  <!--         <script>
+        function handleResponse(results) {
+            for (var i = 0; i < 9; i++) {
+                var item = results.items[i];
+                $('#select').append("<p><img src= "+ item.volumeInfo.imageLinks.thumbnail + "<br>"+ item.volumeInfo.title + " by " + item.volumeInfo.authors +"</p>");
+              //  $('#select').append("<p><img src= "+ item.volumeInfo.imageLinks.thumbnail + "</p>");
+              //  $('#content').append("<p>"+ item.volumeInfo.title + " by " + item.volumeInfo.authors + "</p>");
+
+                // var $newBook = ($item.volumeInfo.title,);
+                //$('#tile').append("<p class = img><img src= " + item.volumeInfo.imageLinks.thumbnail + "<br>" + item.volumeInfo.title + " by " + "<br>" + item.volumeInfo.authors + " </p>")
+                //           $('#row').append("<p>" + item.volumeInfo.title + " by " + item.volumeInfo.authors + "</p>");
+            }
+
+         $("#subject").val("");
+
+
+        }
+
+
+           </script>
+
+
+
+           <!-- <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail">
+
+            </a></div>
+            <div class="col-md-3">.col-md-3</div>
+            <div class="col-md-3">.col-md-3</div>
+            <div class="col-md-3">.col-md-3</div>
+        </div>
+
+                   <!-- <img src="+ item.volumeInfo.imageLinks.thumbnail + " alt="...">
+                    <div class="title">
+
+</div> -->
+</div>
+
+</div>
+
+
+        <!--        <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <!--     <div class="tile">-->
+              <!--  <div class="tile">
+                    <a target="_blank" href="#" class="thumbnail">
+                        <img src="item.volumeInfo.imageLinks.thumbnail" alt="..." width="150" height="150">
+                    </a>
+                    <p class="title">"+item.volumeInfo.title+"by"+ item.volumeInfo.authors+"<p>
+
+
+
+                </div>
+
+
+
+                </div>
+
+</div> -->
+
+      <!-- in production code, item.text should have the HTML entities escaped.
+                //            get thumbnail image,-->
+
+
+
+
+
+
+        <!-- single tile start -->
+
+ <!--          <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+          </div>
+        </div>
+        <!-- single tile end-->
+
+
+   <!--     <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="tile">
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+                
+              
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="tile"> 
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+                
+              
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="tile"> 
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+              
+             
+                
+              
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="tile"> 
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+                
+              
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="tile"> 
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+                
+              
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="tile"> 
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+                
+              
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="tile"> 
+            <a href="#" class="thumbnail">
+              <img src="http://lorempixel.com/g/128/175/" alt="...">
+               <span class="title">The Meaning of Life</span><br>
+                <span class="authors">Trevor Paglan</span>
+
+            </a>
+             
+                
+              
+          </div>
+        </div>
+        
+
+
+    </div>
+  </div>-->
+
+
+
+
+
+  <div class="container">
+    <div class="clearfix">
+      <footer class="navbar-fixed-bottom">
+
+      <!-- collection categories -->
+        <div class="container">
+
+          <div class="row">
+            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
+            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
+            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
+            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3"><div class="collectionIcon"><img src="..//img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
+          </div>
+       
+        </div>
+      	
+      </footer>
+    </div>
+  </div>
+<!-- closed footer container -->
+
+<!-- closed global container -->
+
+
+</div>
+</body>
+
+
+</html>
+
