@@ -76,13 +76,14 @@
 
 <!-- start results / bin / etc -->
     <div class = "container" id="collectionBin">
-
+        <div id="bin">
         <script>
             $('#search').on("submit",function(e) {
                 console.log(e);
                 e.preventDefault();
+                $("#bin").empty();
                 $('body').css('background-image','none');
-                $("#subject").empty();
+
                 var s = $("#subject").val();
                 $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
                         .done(
@@ -90,13 +91,14 @@
                             console.log(data);
                            // var results = data;
                             //handleResponse(results);
-                            renderAll(data.items, ".bin")
+                            renderAll(data.items, "#bin")
                         }
                 );
+                $("#subject").val("");
             });
         </script>
 
-        <div class="bin">
+     <!--   <div class="bin"> -->
 
         </div>
         <!-- end bin --> 
@@ -104,10 +106,10 @@
     <!-- end Container -->
 
 
-        
+
 
         <!-- start Footer -->
-
+</div>
   <div class="container">
     <div class="clearfix">
       <footer class="navbar-fixed-bottom">
