@@ -60,6 +60,16 @@ body {
   height: 25px;
   overflow: none;
 }
+
+#tile {
+    display: inline;
+    height: auto;
+    width: auto;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+
+}
  
 .container {
   display: absolute;
@@ -127,4 +137,37 @@ position: fixed;
 
 }
 
+/*drag and drop */
+.danger {
+    background-color: #d9534f;
+}
 
+.primary {
+    background-color: #337ab7;
+}
+
+.warning {
+    background-color: #f0ad4e;
+}
+
+.success {
+    background-color: #5cb85c;
+}
+
+#content {
+
+    padding: 3px;
+
+color: #ffffff;
+    font-size: 14px;
+display: inline;
+}
+
+
+#select {
+color:#ffffff;
+    width: 200px;
+    height: 250px;
+    font-size: 14px;
+
+}
