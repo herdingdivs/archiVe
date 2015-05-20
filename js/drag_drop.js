@@ -1,4 +1,17 @@
 $(document).ready(function() {
+  
+    var container = $('#bin');
+    
+    $('.collections button').on('click', function(){
+      var collection = $(this).data('collection');
+      var books = getBooks(collection);
+      
+      container.empty();
+      
+      renderAll(books, container);
+    });
+  
+  
     var dropHandler = function (event, ui) {
         var $this = $(this);
         var thumb = ui.draggable.find("a.thumbnail");
@@ -8,32 +21,8 @@ $(document).ready(function() {
         };
 
         /* Need JSON object associated with each tile to store in local storage */
-        var collection = null;
-        if ($this.hasClass("btn-danger")) {
-            thumb.addClass("danger");
-            collection = "keeper";    //setting up a key for each collection
-        } else if ($this.hasClass("btn-primary")) {
-            thumb.addClass("primary");
-            collection = "surfing";
-        } else if ($this.hasClass("btn-warning")) {
-            thumb.addClass("warning");
-            collection = "gonna";
-        } else if ($this.hasClass("btn-success")) {
-            thumb.addClass("success");
-            collection = "maybe";
-        }
-        var library = localStorage[collection];  //make into a function in local_storage.js
-        if (! library){
-            library = {};
-        } else {
-            library = JSON.parse(library);
-        }
-        var id = ui.draggable.data("id");
-        var book = cache[id];
-        library[id] = book;
-        localStorage[collection] = JSON.stringify(library);
-        //console.log(ui, this, ui.draggable.data("id"), cache[ui.draggable.data("id")]);
-        console.log(localStorage);
+        var collection = $this.data('collection');
+        setBook(ui.draggable.data('book'), collection);
     }
     dragOptions = {
         cursor: "move",
@@ -49,5 +38,39 @@ $(document).ready(function() {
 });
 
 
+function getBooks(collection) {
+  var books = getItem(collection) || [];
+  return books.map(function(id){
+    return getItem(id);
+  });
+}
+
+function setBook(book, collection) {
+    var cached = getItem(book.id);
+    if(!cached) setItem(book.id, book);
+    
+    if(collection) {
+      var group = getItem(collection);
+      if(!group) group = [];
+      if(!~group.indexOf(book.id)) group.push(book.id); // only add new books.
+      setItem(collection, group);
+    }
+}
+
+
+function setItem(id, data) {
+  localStorage.setItem(id, JSON.stringify(data));
+}
+
+function getItem(id) {
+  var data = localStorage.getItem(id);
+  if(!data) return null;
+  try {
+    data = JSON.parse(data)
+  } catch(e) {
+    data = null;
+  }
+  return data;
+}
 
  
