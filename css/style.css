@@ -13,7 +13,10 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
-
+.tempHeader {
+  background-image: url(http://placekitten.com/200/300);
+  background-color: #fff;
+}
 
 .tile a {
   text-decoration: none !important;
