@@ -57,13 +57,14 @@
 
 
 #collectionBin {
-  padding-top:5px;
+  padding-top:40px;
   border-top-style: dotted;
   border-top-width: 1px;
   border-top-color: #FCFCFC;
 height:auto;
     width:1000px;
 display: inherit;
+z-index: 0;
 }
 
 html,
@@ -86,8 +87,9 @@ body {
 }
 
 #bin {
-  overflow: hidden;
+  /*overflow: hidden;*/
   margin-bottom: 125px;
+  z-index: 6;
 }
 
 .logo {
@@ -106,7 +108,7 @@ body {
 .container {
   display:block;
   margin-top: 40px;
-  overflow:hidden;
+  /*overflow:hidden;*/
 }
 
 
