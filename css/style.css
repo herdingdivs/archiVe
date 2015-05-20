@@ -13,6 +13,11 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
+label {
+    display: inline-block;
+    width: 5em;
+  }
+
 .tempHeader {
   background-image: url(http://placekitten.com/200/300);
   background-color: #fff;
