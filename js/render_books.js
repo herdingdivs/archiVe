@@ -1,9 +1,9 @@
 var cache = {};                                   //cache is available everywhere
-var render = function(book, bin) {
-    var id = book.id;
-    cache[id] = book;
+var render = function(book, container) {
+    // var id = book.id;
+    // cache[id] = book;
     var html =
-        '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix" >' +
+        '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix">' +
         '<a href="#" class="thumbnail">' + 
         '<img src="'+book.volumeInfo.imageLinks.smallThumbnail+'" alt="..." style="height: 130px; width: auto; overflow: hidden;">' +
         '<p class="text-center title" style="font-size:10px; white-space: nowrap; overflow:hidden;"><strong>' +book.volumeInfo.title + '</strong></p>' +
@@ -11,7 +11,9 @@ var render = function(book, bin) {
         '</a>' +
         '</div>';
 
-    $(html).data("id", id).appendTo(bin);
+    $(html)
+        .data("book", book)
+        .appendTo(container);
 
 }
 var renderAll = function(books, container) {                      //calling a method
