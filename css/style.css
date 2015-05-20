@@ -14,6 +14,7 @@
 @media (min-width: @screen-lg-min) { ... }
 
 
+
 .tile a {
   text-decoration: none !important;
 
@@ -73,12 +74,17 @@ body {
 }
 
 .header {
-  display: absolute;
+  display: relative;
   width: 100%;
 }
 
-#searchBox {
+#searchBar {
 
+}
+
+#bin {
+  overflow: hidden;
+  margin-bottom: 125px;
 }
 
 .logo {
@@ -89,8 +95,6 @@ body {
 
 #tile {
     display: inline;
-    height-min:300px;
-
     text-align: center;
     background-color: #FCFCFC;
 
@@ -99,43 +103,10 @@ body {
 .container {
   display:block;
   margin-top: 40px;
-  /*padding-top: 20px;
-  padding-bottom: 20px;*/
-  /*border-width: 1px;
-  border-style: solid;
-  border-top-color: #fff;*/
-  /*min-height: 100%;*/
-  /*height: auto !important;*/
-  /*height: 100%;*/
-  /* Negative indent footer by it's height */
-  /*margin: 0 auto -60px;*/
   overflow:hidden;
 }
 
-/* Set the fixed height of the footer here */
-/*.push,
-.footer {
-  height: 60px;
-}
-.footer {
-  background-color: #eee;
-}
 
-@media (max-width: 1200px) {
-.footer {
-  margin-left: -20px;
-  margin-right: -20px;
-  padding-left: 20px;
-  padding-right: 20px;
-}*/
-
-/*.footer {
-
-position: fixed;
-  width: 100%;
-  bottom: 0;
-
-}*/
 
 .clearfix {
   *zoom: 1;
@@ -150,13 +121,6 @@ position: fixed;
   }
 }
 
-/* Yvonne
-
-#select {
-    image-source:"item.volumeInfo.imageLinks.thumbnail";
-    width: 200px;
-    height: 200px; */
-}
 
 /*drag and drop */
 .danger {

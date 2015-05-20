@@ -3,11 +3,11 @@ var render = function(book, bin) {
     var id = book.id;
     cache[id] = book;
     var html =
-        '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix">' +
-        '<a href="#" class="thumbnail">' +
-        '<img src="'+book.volumeInfo.imageLinks.thumbnail+'" alt="...">' +
-        '<p class="text-center title"><strong>' +book.volumeInfo.title + '</strong></p><br>' +
-        '<p class="text-center authors">' + book.volumeInfo.authors[0] + '</p>' +
+        '<div class="col-xs-12 col-sm-6 col-md-3 tile clearfix" >' +
+        '<a href="#" class="thumbnail">' + 
+        '<img src="'+book.volumeInfo.imageLinks.smallThumbnail+'" alt="..." style="height: 130px; width: auto; overflow: hidden;">' +
+        '<p class="text-center title" style="font-size:10px; white-space: nowrap; overflow:hidden;"><strong>' +book.volumeInfo.title + '</strong></p>' +
+        '<p class="text-center authors"style="font-size:10px; white-space: nowrap; overflow:hidden;">' + book.volumeInfo.authors[0] + '</p>' +
         '</a>' +
         '</div>';
 
