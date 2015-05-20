@@ -1,4 +1,16 @@
 $(document).ready(function() {
+
+    var container = $('#bin');
+
+    $('.collections button').on('click', function(){
+        var collection = $(this).data('collection');
+        var books = getBooks(collection);
+
+        container.empty();
+
+        renderAll(books, container, collection);
+    });
+
     var dropHandler = function (event, ui) {
         var $this = $(this);
         var thumb = ui.draggable.find("a.thumbnail");
@@ -22,18 +34,9 @@ $(document).ready(function() {
             thumb.addClass("success");
             collection = "maybe";
         }
-        var library = localStorage[collection];  //make into a function in local_storage.js
-        if (! library){
-            library = {};
-        } else {
-            library = JSON.parse(library);
-        }
-        var id = ui.draggable.data("id");
-        var book = cache[id];
-        library[id] = book;
-        localStorage[collection] = JSON.stringify(library);
-        //console.log(ui, this, ui.draggable.data("id"), cache[ui.draggable.data("id")]);
-        console.log(localStorage);
+
+        var collection = $this.data('collection');
+        setBook(ui.draggable.data('book'), collection);
     }
     dragOptions = {
         cursor: "move",
@@ -47,6 +50,46 @@ $(document).ready(function() {
         drop: dropHandler
     });
 });
+
+function getBooks(collection) {
+    var books = getItem(collection) || {};
+    var result = [];
+    for (var id in books) {         //iterate through an object
+       result.push(books[id]);
+    }
+    return result;
+
+}
+
+function setBook(book, collection) {
+    var cached = getItem(book.id);
+    if(!cached) setItem(book.id, book);
+
+    if(collection) {
+        var group = getItem(collection);
+        if(!group) group = {};
+        group[book.id] = book; // only add new books.
+        setItem(collection, group);
+    }
+}
+
+
+function setItem(id, data) {
+    localStorage.setItem(id, JSON.stringify(data));
+}
+
+function getItem(id) {
+    var data = localStorage.getItem(id);
+    if(!data) return null;
+    try {
+        data = JSON.parse(data)
+    } catch(e) {
+        data = null;
+    }
+    return data;
+}
+
+
 
 
 
