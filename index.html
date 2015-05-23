@@ -3,8 +3,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
-  
-
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,13 +16,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="js/render_books.js"></script>
   <script src="js/drag_drop.js"></script>
- <!-- <script src="js/local_storage.js"></script>-->
-  <script src="js/library.js"></script>
 
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-
 
 <!-- Optional theme -->
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
@@ -35,46 +29,10 @@
 <!-- custom style sheets -->
 
 <link rel="stylesheet" href="css/style.css">
-<script>
-$(document).ready(function() {
-            $('#search').on("submit",function(e) {
-                console.log(e);
-                e.preventDefault();
-                $("#bin").empty();
-                $('body').css('background-image','none');
-
-                var s = $("#subject").val();
-                $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
-                        .done(
-                        function(data) {
-                            console.log(data);
-                           // var results = data;
-                            //handleResponse(results);
-                            for (var i = 0; i < 8; i++) {
-                                var item = data.items[i];
-                            renderAll(data.items[i], "#bin")
-                        }
-                            }
-                );
-                $("#subject").val("");
-            });
-          });
-        </script>
-
-
-<script>
-  $(function() {
-    $( document ).tooltip();
-  });
-  </script>
-
 
 </head>
 
-
 <body>
-
-
 <!-- script testing -->
 <script type="text/javascript">
     $(document).ready(function() {
@@ -83,94 +41,98 @@ $(document).ready(function() {
     });
 </script>
 
-
 <!-- end script testing -->
-
 
 <!-- start Container for header -->
 <div class="container">
-  <header class="header center-block" id="searchBar">
-    
-    <!-- start Search Bar-->
+    <header class="header center-block" id="searchBar">
+
+        <!-- start Search Bar-->
         <div class="col-xs-12 col-sm-12 col-md-12 center-block">
-        <form id="search"> 
-        <div class="input-group input-group-lg">
-            <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo" title:"Archive: A Weblab Project by Yvonne, Selina, and Patrick"></span>
-            <input id="subject" class="form-control" placeholder="Search" aria-hidden="true">
+            <form id="search">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon logo"><img src="img/logo_sm.svg" alt="logo"></span>
+                    <input id="subject" class="form-control" placeholder="Search" aria-hidden="true">
 
-            <div class="input-group-btn mag">
-                <button type="submit" class="btn btn-default" id="go" ><span class="input-group-addon glyphicon glyphicon-search"></span> </button>
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default" id="go" ><span class="input-group-addon glyphicon glyphicon-search"></span> </button>
 
-        </div>
-
-        <!-- <div class="input-group-btn garbage" style="display:none;"><button type="submit" class="btn btn-default" id="trash" ><span class="input-group-addon glyphicon glyphicon-trash"></span></button></div>
-      </div> -->
+                    </div>
+                </div>
             </form>
-
-
-            <script type="text/javascript">
-  $(document).ready(function() {
-      function replacer(target, source) {
-      document.getElementById(target).innerHTML = document.getElementById(source).innerHTML;
-   };
-  });
-  </script>
-
-           <!--  <button onClick="replacer('target', 'replace_target')">Replace it</button>
-
-          <div id="target"><span>Replace this stuff</span></div>
-          <div id="replacements" style="display:none"><span id="replace_target">IT WORKS!!!!</span></div>
- -->
-
-
-
-
-      </div>
-
-
         </div>
-      <!-- end Search bar -->
-  </header>
-  <!-- end Header -->
+        <!-- end Search bar -->
+    </header>
+    <!-- end Header -->
 </div>
 <!-- end Container -->
 
 <!-- start results / bin / etc -->
-    <div class = "container" id="collectionBin">
-        <div id="bin">
-        
+<div class = "container" id="collectionBin">
+    <div id="bin">
+        <script>
+            $('#search').on("submit",function(e) {
+                console.log(e);
+                e.preventDefault();
+                $("#bin").empty();
+                $('body').css('background-image','none');
+                var s = $("#subject").val();
+                $.getJSON("https://www.googleapis.com/books/v1/volumes",{q:s})
+                        .done(
+                        function(data) {
+                            console.log(data);
+                            // var results = data;
+                            //handleResponse(results);
+                            for (var i = 0; i < 8; i++) {
+                                var item = data.items[i];
+                                renderAll(data.items[i], "#bin")
+                            }
+                        }
+                );
+                $("#subject").val("");
+            });
+        </script>
 
-     <!--   <div class="bin"> -->
+        <!--   <div class="bin"> -->
 
-        </div>
-        <!-- end bin --> 
     </div>
-    <!-- end Container -->
-
-
-
-
-        <!-- start Footer -->
+    <!-- end bin -->
 </div>
-  <div class="container">
+<!-- end Container -->
+
+<!-- start Footer -->
+</div>
+<div class="container">
     <div class="clearfix">
-      <footer class="navbar-fixed-bottom">
+        <footer class="navbar-fixed-bottom">
 
-      <!-- collection categories -->
-        <div class="container">
+            <!-- collection categories -->
+            <div class="container">
 
-          <div class="row">
-            <button type="button" class="btn btn-danger col-xs-3 col-sm-3 col-md-3 bucket" title:"Save books here!"><div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div><p class="collectionText">Keeper</p></button>
-            <button type="button" class="btn btn-primary col-xs-3 col-sm-3 col-md-3 bucket"><div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div><p class="collectionText">Surfing</p></button>
-            <button type="button" class="btn btn-warning col-xs-3 col-sm-3 col-md-3 bucket"><div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div><p class="collectionText">Gonna</p></button>
-            <button type="button" class="btn btn-success col-xs-3 col-sm-3 col-md-3 bucket"><div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div><p class="collectionText">Maybe</p></button>
-          </div>
-       
-        </div>
-        
-      </footer>
+                <div class="row collections">
+                    <button type="button" data-collection="keeper" class="btn btn-danger col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/keeper_wh.svg" alt="keeper icon"></div>
+                        <p class="collectionText">Keeper</p>
+                    </button>
+                    <button type="button" data-collection="surfing" class="btn btn-primary col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/surfing_wh.svg" alt="surfing icon"></div>
+                        <p class="collectionText">Surfing</p>
+                    </button>
+                    <button type="button" data-collection="gonna" class="btn btn-warning col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/gonna_wh2.svg" alt="gonna icon"></div>
+                        <p class="collectionText">Gonna</p>
+                    </button>
+                    <button type="button" data-collection="maybe" class="btn btn-success col-xs-3 col-sm-3 col-md-3">
+                        <div class="collectionIcon"><img src="img/maybe_wh.svg" alt="maybe icon"></div>
+                        <p class="collectionText">Maybe</p>
+                    </button>
+                </div>
+
+            </div>
+
+        </footer>
     </div>
-  </div>
+</div>
 <!-- closed footer container -->
 
 <!-- closed global container -->
@@ -181,4 +143,5 @@ $(document).ready(function() {
 
 
 </html>
+
 

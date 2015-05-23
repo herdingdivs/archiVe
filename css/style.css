@@ -133,19 +133,19 @@ body {
 
 
 /*drag and drop */
-.danger {
+.danger, .keeper {
     background-color: #d9534f;
 }
 
-.primary {
+.primary, .surfing {
     background-color: #337ab7;
 }
 
-.warning {
+.warning, .gonna {
     background-color: #f0ad4e;
 }
 
-.success {
+.success, .maybe {
     background-color: #5cb85c;
 }
 

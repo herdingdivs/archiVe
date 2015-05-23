@@ -1,12 +1,12 @@
 /**
  * Created by YS.Joyce on 5/19/2015.
  */
+<script>
 
-var container = $('bin');
 var collection = null;
-
+//  $('#bin').empty;
 $(".bucket").click(function() {
-$('container').empty();
+
 
     if ($this.hasClass("btn-danger")) {
     thumb.addClass("danger");
@@ -40,7 +40,8 @@ $('container').empty();
     var item = data.items[i];
     renderAll(data.items[i], "#bin")
     }
-return data;
+
 
     })
 
+</script>
