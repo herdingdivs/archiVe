@@ -1,3 +1,5 @@
+Note: this group project is a work in progress. 
+
 # archiVe
 
 ## A. General Information
